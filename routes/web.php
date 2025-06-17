@@ -1,5 +1,7 @@
 <?php
 
+throw new \Exception('INI ADALAH TES UNTUK MEMAKSA LOG MUNCUL DI RAILWAY');
+
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProfileController;
 
