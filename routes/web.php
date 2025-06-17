@@ -64,9 +64,13 @@ Route::middleware('auth')->group(function () {
 // 3. RUTE KHUSUS ADMIN
 Route::middleware(['auth', 'role:admin'])->prefix('admin')->name('admin.')->group(function () {
     Route::get('/dashboard', [AdminDashboardController::class, 'index'])->name('dashboard');
-    Route::resource('jobs', AdminJobController::class);
-    Route::resource('articles', AdminArticleController::class);
-    Route::resource('workshops', AdminWorkshopController::class);
+    // 3. RUTE KHUSUS ADMIN (SUDAH DIPERBAIKI)
+Route::middleware(['auth', 'role:admin'])->prefix('admin')->name('admin.')->group(function () {
+    Route::get('/dashboard', [AdminDashboardController::class, 'index'])->name('dashboard');
+    Route::resource('jobs', AdminJobController::class)->names('admin.jobs');
+    Route::resource('articles', AdminArticleController::class)->names('admin.articles');
+    Route::resource('workshops', AdminWorkshopController::class)->names('admin.workshops');
+});
 });
 
 
