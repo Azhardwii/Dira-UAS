@@ -91,7 +91,8 @@ Route::middleware(['auth', 'role:pelamar'])->group(function () {
     })->name('chat.groq.index');
     Route::post('/chat/groq/send', [GroqChatController::class, 'sendMessage'])->name('chat.groq.send');
 
-    Route::get('/quiz/start', [QuizController::class, 'start'])->name('quiz.start')->middleware('auth');
+
+    Route::get('/quiz/start', [QuizController::class, 'start'])->name('quiz.authenticated.start')->middleware('auth');
 });
 
 
